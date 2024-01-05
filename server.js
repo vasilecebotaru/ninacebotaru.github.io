@@ -4,7 +4,7 @@ const port = process.env.PORT || 8080;
 
 const app = express();
 
-app.use('/static', express.static(process.cwd() + "/_static"));
+app.use('/static', express.static(path.join(__dirname, "_static")));
 
 app.get("/*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "index.html"));
