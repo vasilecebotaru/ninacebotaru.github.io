@@ -37,7 +37,11 @@ const router = async () => {
 
     const view = new match.route.view();
 
-    document.querySelector("#app").innerHTML = await view.getHTML();
+    const appDiv = document.querySelector("#app");
+    const fragment = await view.getHTML();
+
+     appDiv.innerHTML = '';
+     appDiv.appendChild(fragment);
 
     // console.log(match.route.view());
 }
@@ -49,6 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if(e.target.matches("[data-link]")){
             e.preventDefault();
             navigateTo(e.target.href);
+
+            const navLinksArr = document.querySelectorAll(".nav-link");
+            navLinksArr.forEach(navLink => {
+                navLink.classList.remove("active");
+            });
+
+            e.target.classList.add("active");
+
         }
     })
 

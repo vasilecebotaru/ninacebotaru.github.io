@@ -7,6 +7,17 @@ export default class extends abstractView {
     }
 
     async getHTML() {
-        return `<h1>recenzie ske</h1>`;
+        const fragment = document.createDocumentFragment();
+        const htmlContent = `<p class="temporary">recenzii coming soon</p>`;
+
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlContent;
+
+        // Append the child nodes of the temporary container to the DocumentFragment
+        while (tempDiv.firstChild) {
+        fragment.appendChild(tempDiv.firstChild);
+        }
+
+        return fragment;
     }
 }
