@@ -19,7 +19,7 @@ export default class extends abstractView {
                 <li>Relaționare</li>
                 <li>Echipă</li>
             </ul>
-            <button class="btn">Începe</button>
+            <button class="btn"><a href="/contact">Începe</a></button>
         </div>
         <div class="social-container">
             <a href="#" class="social-link"><img src="static/img/icon-facebook.png" alt="link spre facebook"></a>
@@ -51,9 +51,9 @@ export default class extends abstractView {
     <section class="portofoliu-section4">
         <h2 class="subtitle">Diplome</h2>
         <div class="diploma-container">
-            <a href="/static/img/img-diploma1.png" data-lightbox="img-diploma1"><img src="/static/img/img-diploma1-small.png" alt="diploma coaching"></a>
-            <a href="/static/img/img-diploma2.png" data-lightbox="img-diploma2"><img src="/static/img/img-diploma2-small.png" alt="diploma de doctor"></a>
-            <a href="/static/img/img-diploma3.png" data-lightbox="img-diploma3"><img src="/static/img/img-diploma3-small.png" alt="atestat de conferentiar universitar"></a>
+            <a href="/static/img2/img-diploma1.png" data-lightbox="img-diploma1"><img src="/static/img/img-diploma1-small.png" alt="diploma coaching"></a>
+            <a href="/static/img2/img-diploma2.png" data-lightbox="img-diploma2"><img src="/static/img/img-diploma2-small.png" alt="diploma de doctor"></a>
+            <a href="/static/img2/img-diploma3.png" data-lightbox="img-diploma3"><img src="/static/img/img-diploma3-small.png" alt="atestat de conferentiar universitar"></a>
         </div>
     </section>`;
 

@@ -10,9 +10,13 @@
     <link rel="stylesheet"  href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/portofoliu.css">
     <link rel="stylesheet" href="/static/css/vars.css">
-    <link rel="stylesheet" href="/static/css/lightbox.min.css">
-    <script src="/static/js/lightbox-plus-jquery.min.js" defer></script>
+
+    <!-- <link rel="stylesheet" href="/static/css/lightbox.min.css">
+    <script src="/static/js/lightbox-plus-jquery.min.js" defer></script> -->
     <!-- <link rel="stylesheet" href="/static/css/modificari.css"> -->
+    <link rel="stylesheet" href="ps/dist/photoswipe.css">
+    <script src="/static/js/portofoliu.js" type="module" defer></script>
+    <script src="/ps/dist/types/lightbox/lightbox" type="module" defer></script>
 </head>
 <body>
     <div class="supreme-container">
@@ -75,10 +79,16 @@
         </section>
         <section class="portofoliu-section4">
             <h2 class="subtitle">Diplome</h2>
-            <div class="diploma-container">
-                <a href="/static/img/img-diploma1.png" data-lightbox="img-diploma1"><img src="/static/img/img-diploma1-small.png" alt="diploma coaching"></a>
-                <a href="/static/img/img-diploma2.png" data-lightbox="img-diploma2"><img src="/static/img/img-diploma2-small.png" alt="diploma de doctor"></a>
-                <a href="/static/img/img-diploma3.png" data-lightbox="img-diploma3"><img src="/static/img/img-diploma3-small.png" alt="atestat de conferentiar universitar"></a>
+            <div class="pswp-gallery diploma-container" id="diploma-gallery">
+                <a href="/static/img2/img-diploma1.png" data-pswp-width="2000" data-pswp-height="1414" target="_blank">
+                    <img src="/static/img/img-diploma1-small.png" alt="diploma coaching">
+                </a>
+                <a href="/static/img2/img-diploma2.png" data-pswp-width="2400" data-pswp-height="1687" target="_blank">
+                    <img src="/static/img/img-diploma2-small.png" alt="diploma de doctor">
+                </a>
+                <a href="/static/img2/img-diploma3.png" ddata-pswp-width="2400" data-pswp-height="1687" target="_blank">
+                    <img src="/static/img/img-diploma3-small.png" alt="atestat de conferentiar universitar">
+                </a>
             </div>
         </section>
     </div>

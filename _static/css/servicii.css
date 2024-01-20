@@ -1,0 +1,100 @@
+#app.services{
+    background-image: var(--gradient-bg);
+}
+
+.services section{
+    height: 100vh;
+    padding: 3vh 5%;
+}
+
+.services .service-section1{
+    padding-top: 10vmax;
+}
+.services .service-card{
+    height: 100%;
+    width: 100%;
+    padding: 10vh 5%;
+    background-image: var(--gradient-accent);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: center;
+    border-radius: 30px;
+}
+
+.services .card-title{
+    font-family: "Lexend Exa", sans-serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: var(--color-text);
+}
+.services .card-text{
+    font-family: "Lexend", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: hsl(0, 0%, 100%, 0.65);
+    line-height: 1.8;
+    /* text-wrap: balance; */
+    text-align: start;
+}
+
+.services .price-wrapper > .price{
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 100;
+    font-size: 2.5rem;
+    color: var(--color-text);
+}
+.services .price-wrapper > .crossed-out{
+    font-family: "Lexend Deca", sans-serif;
+    font-weight: 100;
+    font-size: 2.2rem;
+    color: hsl(0, 0%, 100%, 0.6);
+    text-decoration: line-through;
+}
+.services .price-wrapper > p {
+    font-family: "Lexend", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: hsl(0, 0%, 0%, 0.52);
+}
+
+.services span.small{
+    font-size: 1.8rem;
+}
+
+.services .price-wrapper-flex{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.services .btn{
+    font-size: 1.4rem;
+    background-color: hsl(30, 67%, 25%);
+    align-self: center;
+}
+
+.services .btn:hover{
+    background-color: hsl(30, 67%, 32%);
+}
+
+@media screen and (max-height: 820px){
+    .services .service-card{
+        padding: 5vh 5%;
+    }
+    .services .card-title{
+        font-size: 1.6rem;
+    }
+    .services .card-text{
+        text-wrap: balance;
+        line-height: initial;
+    }
+}
+
+@media screen and (orientation: landscape){
+    .services section{
+        height: unset;
+    }
+}

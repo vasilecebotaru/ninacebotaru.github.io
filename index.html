@@ -9,8 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500&family=Lexend&family=Lexend+Deca:wght@100&family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet"  href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/portofoliu.css">
+    <link rel="stylesheet" href="/static/css/servicii.css">
     <link rel="stylesheet" href="/static/css/vars.css">
     <link rel="stylesheet" href="/static/css/lightbox.min.css">
+    <link href=" https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css " rel="stylesheet">
+    <script src=" https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js " defer></script>
+    <link rel="stylesheet" href="/static/css/recenzii.css">
+    <script src="/static/js/recenzii.js" type="module" defer></script>
     <!-- activeaza sau dezactiveaza fisierul de mai jos ca sa faci o comparatie -->
     <!-- <link rel="stylesheet" href="/static/css/modificari.css"> -->
     <script src="/static/js/lightbox-plus-jquery.min.js" defer></script>
@@ -22,21 +27,21 @@
             <nav>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="/" class="nav-link active" data-link>Portofoliu</a>
+                        <a href="/" class="nav-link active" data-link="portfolio">Portofoliu</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/servicii" class="nav-link" data-link>Servicii</a>
+                        <a href="/servicii" class="nav-link" data-link="services">Servicii</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/recenzii" class="nav-link" data-link>Recenzii</a>
+                        <a href="/recenzii" class="nav-link" data-link="reviews">Recenzii</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link" data-link>Contacte</a>
+                        <a href="/contact" class="nav-link" data-link="contact">Contacte</a>
                     </li>
                 </ul>
             </nav>
         </header>
-        <main id="app"></main>
+        <main id="app" class="portfolio"></main>
     </div>
 </body>
 </html>

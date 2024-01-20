@@ -3,6 +3,9 @@ import Contact from "../views/Contact.js";
 import Recenzii from "../views/Recenzii.js";
 import Servicii from "../views/Servicii.js";
 import Status404 from "../views/Status404.js";
+import createSwiper from "./recenzii.js";
+
+const mainElem = document.querySelector("#app");
 
 const navigateTo = (url) => {
     history.pushState(null, null, url);
@@ -12,11 +15,14 @@ const navigateTo = (url) => {
 const router = async () => {
     const routes = [
         { path: "/", view: Portofoliu },
+        { path: "/portofoliu", view: Portofoliu },
         { path: "/servicii", view: Servicii },
         { path: "/recenzii", view: Recenzii },
         { path: "/contact", view: Contact },
         { path: "/404", view: Status404 }
     ];
+
+    var swiper;
 
 
     const routesMatchCurrLoc = routes.map(route => {
@@ -37,11 +43,14 @@ const router = async () => {
 
     const view = new match.route.view();
 
-    const appDiv = document.querySelector("#app");
+    
     const fragment = await view.getHTML();
 
-     appDiv.innerHTML = '';
-     appDiv.appendChild(fragment);
+    mainElem.innerHTML = '';
+    mainElem.appendChild(fragment);
+    if(match.route.path === `/recenzii`){
+        swiper = createSwiper();
+    }
 
     // console.log(match.route.view());
 }
@@ -49,20 +58,46 @@ window.addEventListener("popstate", router);
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const navLinksArr = document.querySelectorAll(".nav-link");
+
     document.body.addEventListener("click", e => {
         if(e.target.matches("[data-link]")){
             e.preventDefault();
             navigateTo(e.target.href);
 
-            const navLinksArr = document.querySelectorAll(".nav-link");
+            console.log(location.pathname);
+
             navLinksArr.forEach(navLink => {
                 navLink.classList.remove("active");
             });
 
             e.target.classList.add("active");
+            mainElem.classList = e.target.dataset.link;
 
         }
-    })
+    });
+
+    const locationMap = {
+        "": "portfolio",
+        "portofoliu": "portfolio",
+        "servicii": "services",
+        "recenzii": "reviews",
+        "contact": "contact",
+        "404": "notfound404"
+    }
+
+    const currentLocation = locationMap[location.pathname.slice(1)] || "notfound404";
+
+    navLinksArr.forEach(navLink => {
+        navLink.classList.remove("active");
+        if(navLink.dataset.link === currentLocation){
+            navLink.classList.add("active");
+        }
+    });
+
+    mainElem.classList = currentLocation;
+
+    
 
     router();
 });
