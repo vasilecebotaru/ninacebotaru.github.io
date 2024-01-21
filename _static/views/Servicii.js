@@ -1,4 +1,5 @@
 import abstractView from "./abstractView.js";
+import '../css/servicii.css'
 
 export default class extends abstractView {
     constructor() {

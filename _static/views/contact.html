@@ -7,20 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500&family=Lexend&family=Lexend+Deca:wght@100&family=Lexend+Exa:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet"  href="/static/css/styles.css">
     <!-- <link rel="stylesheet" href="/static/css/portofoliu.css">
-    <link rel="stylesheet" href="/static/css/servicii.css"> -->
+        <link rel="stylesheet" href="/static/css/servicii.css"> -->
+    <!-- <link rel="stylesheet"  href="/static/css/styles.css">
     <link rel="stylesheet" href="/static/css/vars.css">
-    <link rel="stylesheet" href="/static/css/contact.css">
-    <!-- <link rel="stylesheet" href="/static/css/lightbox.min.css"> -->
-    <!-- <link href=" https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.css " rel="stylesheet">
-    <script src=" https://cdn.jsdelivr.net/npm/swiper@11.0.5/swiper-bundle.min.js " defer></script> -->
-    <!-- <link rel="stylesheet" href="/static/css/recenzii.css"> -->
-    <!-- <script src="/static/js/recenzii.js" type="module" defer></script> -->
-    <!-- activeaza sau dezactiveaza fisierul de mai jos ca sa faci o comparatie -->
-    <!-- <link rel="stylesheet" href="/static/css/modificari.css"> -->
-    <!-- <script src="/static/js/lightbox-plus-jquery.min.js" defer></script>
-    <script src="/static/js/index.js" type="module" defer></script> -->
+    <link rel="stylesheet" href="/static/css/contact.css"> -->
+    <link rel="stylesheet"  href="../css/styles.css">
+    <link rel="stylesheet" href="../css/vars.css">
+    <link rel="stylesheet" href="../css/contact.css">
+
 </head>
 <body>
     <div class="supreme-container">
@@ -45,16 +40,21 @@
         <main id="app" class="contact">
             <section>
                 <div class="form-wrapper">
-                    <h3>Înregistrează-te aici</h3>
-                    <p>Completați formularul și vă vom suna în scurt timp</p>
+                    <div class="wrapper">
+                        <h3>Înregistrează-te aici</h3>
+                        <p>Completați formularul și vă vom suna în scurt timp</p>
+                    </div>
                     <form action="/submit" method="POST" id="register-form">
                         <div class="form-control">
                             <label for="name">Numele și prenumele</label>
-                            <input type="text" name="name" id="full-name" autocomplete="off" required>
+                            <input type="text" name="name" id="full-name" autocomplete="off" placeholder="NUMELE ȘI PRENUMELE" required>
                         </div>
                         <div class="form-control">
                             <label for="telephone">Telefon</label>
-                            <input type="tel" name="tel" id="telephone" autocomplete="off" required>
+                            <div class="wrapper">
+                                <span class="telephone-prefix">+373</span>
+                                <input type="tel" name="tel" id="telephone" autocomplete="off" placeholder="TELEFON" required>
+                            </div>
                         </div>
                     </form>
                     <button type="submit" class="btn" form="register-form">Trimite</button>
@@ -65,7 +65,7 @@
                         <h3>Succes!</h3>
                         <p>Am primit un mesaj și vă vom suna în curând</p>
                     </div>
-                    <button class="btn">OK</button>
+                    <button class="btn"><a href="/">OK</a></button>
                 </div>
             </section>
         </main>

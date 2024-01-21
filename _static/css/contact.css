@@ -1,19 +1,60 @@
+body{
+    overflow-x: hidden;
+    --color-contact-card: hsl(30, 57%, 48%);
+    --color-text-dark: hsl(30.9, 68.6%, 10%);
+}
 .contact section{
     min-height: 100vh;
     padding: 10vmax 5% 3vh 5%;
-    background-image: url("/static/img2/img-contact-bg.jpg");
+    background-image: url("../img/img-contact-bg.jpg");
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .contact .form-wrapper, .contact .success-container{
-    background-color: var(--color-accent);
+    background-color: var(--color-contact-card);
     padding: 5vh 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     border-radius: 30px;
     color: var(--color-text);
     text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+.contact .form-wrapper{
+    position: static;
+    left: unset;
+    height: 50%;
+    min-height: 400px;
+    translate: 0;
+    margin-bottom: 1rem;
+    translate: 0;
+}
+.contact section.success .form-wrapper{
+    position: absolute;
+    left: -200%;
+}
+.contact .success-container{
+    position: absolute;
+    left: -200%;
+    height: 30%;
+    min-height: 250px;
+    /* translate: 200%; */
+}
+.contact section.success .success-container{
+    position: static;
+    left: unset;
+}
+.success-container > .wrapper, .form-wrapper > .wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
 .contact h3{
@@ -36,13 +77,6 @@
     background-color: var(--color-btn-dark-hover);
 }
 
-.success-container > .wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 7vh;
-}
 
 /* ==================FORM================= */
 form{
@@ -53,12 +87,55 @@ form{
     flex-direction: column;
     margin-bottom: 1rem;
 }
+.form-control .wrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 label{
     align-self: flex-start;
+    color: hsl(0, 0%, 100%, 0.5);
+    text-transform: uppercase;
+    font-family: "Lexend", sans-serif;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
 }
 input{
     border: none;
     outline: none;
     padding: 0.5rem 1rem;
     font-family: "Lexend", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    background-color: var(--color-contact-card);
+    
+    transition: all 0.2s ease-in-out;
+}
+input#full-name, .form-control .wrapper{
+    border-top: 1px solid hsl(0, 0%, 100%, 0.5);
+}
+input::placeholder{
+    font-size: 1rem;
+    font-weight: 500;
+    color: hsl(0, 0%, 100%, 0.6);
+    opacity: 1;
+}
+input:focus{
+    background-color: hsl(0, 0%, 100%, 0.6);
+}
+input:focus::placeholder{
+    color: var(--color-btn-dark-hover);
+}
+/* label:has(~input:focus), label:has(+div.wrapper:focus-within){
+    opacity: 1;
+} */
+input#telephone{
+    flex-grow: 1;
+}
+
+label:has(+input:not(:placeholder-shown)), label:has(+div.wrapper > input:not(:placeholder-shown)){
+    opacity: 1;
 }

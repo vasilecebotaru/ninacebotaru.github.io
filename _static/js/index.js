@@ -3,7 +3,13 @@ import Contact from "../views/Contact.js";
 import Recenzii from "../views/Recenzii.js";
 import Servicii from "../views/Servicii.js";
 import Status404 from "../views/Status404.js";
-import createSwiper from "./recenzii.js";
+import createSwiper from "./recenzii-script.js";
+import lightbox from "./portofoliu-script.js";
+
+import "../css/styles.css";
+import "../css/portofoliu.css";
+import "../css/vars.css"
+
 
 const mainElem = document.querySelector("#app");
 
@@ -48,9 +54,18 @@ const router = async () => {
 
     mainElem.innerHTML = '';
     mainElem.appendChild(fragment);
+
+    if(match.route.path === `/` || match.route.path === `/portofoliu` || match.route.path === `/recenzii`){
+
+        await view.linkImages();
+    }
     if(match.route.path === `/recenzii`){
         swiper = createSwiper();
     }
+    if(match.route.path === `/portofoliu` || match.route.path === `/`){
+        lightbox.init();
+    }
+
 
     // console.log(match.route.view());
 }

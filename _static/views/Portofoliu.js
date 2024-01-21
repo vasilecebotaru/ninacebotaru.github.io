@@ -1,4 +1,13 @@
 import abstractView from "./abstractView.js";
+import dip1 from "../img/img-diploma1.png";
+import dip2 from "../img/img-diploma2.png";
+import dip3 from "../img/img-diploma3.png";
+import dip1small from "../img/img-diploma1-small.png";
+import dip2small from "../img/img-diploma2-small.png";
+import dip3small from "../img/img-diploma3-small.png";
+import iconFb from "../img/icon-facebook.png";
+import iconIg from "../img/icon-instagram.png";
+import iconTt from "../img/icon-tiktok.png"
 
 export default class extends abstractView {
     constructor() {
@@ -22,9 +31,9 @@ export default class extends abstractView {
             <button class="btn"><a href="/contact">Începe</a></button>
         </div>
         <div class="social-container">
-            <a href="#" class="social-link"><img src="static/img/icon-facebook.png" alt="link spre facebook"></a>
-            <a href="#" class="social-link"><img src="static/img/icon-instagram.png" alt="link spre instagram"></a>
-            <a href="#" class="social-link"><img src="static/img/icon-tiktok.png" alt="link spre tiktok"></a>
+            <a href="#" class="social-link"><img id="social-img-fb" alt="link spre facebook"></a>
+            <a href="#" class="social-link"><img id="social-img-ig" alt="link spre instagram"></a>
+            <a href="#" class="social-link"><img id="social-img-tt" alt="link spre tiktok"></a>
         </div>
     </section>
     <section class="portofoliu-section2">
@@ -50,10 +59,16 @@ export default class extends abstractView {
     </section>
     <section class="portofoliu-section4">
         <h2 class="subtitle">Diplome</h2>
-        <div class="diploma-container">
-            <a href="/static/img2/img-diploma1.png" data-lightbox="img-diploma1"><img src="/static/img/img-diploma1-small.png" alt="diploma coaching"></a>
-            <a href="/static/img2/img-diploma2.png" data-lightbox="img-diploma2"><img src="/static/img/img-diploma2-small.png" alt="diploma de doctor"></a>
-            <a href="/static/img2/img-diploma3.png" data-lightbox="img-diploma3"><img src="/static/img/img-diploma3-small.png" alt="atestat de conferentiar universitar"></a>
+        <div class="pswp-gallery diploma-container" id="diploma-gallery">
+            <a id="img-diploma1" data-pswp-width="2000" data-pswp-height="1414" target="_blank">
+                <img id="img-diploma1-small" alt="diploma coaching">
+            </a>
+            <a id="img-diploma2" data-pswp-width="2400" data-pswp-height="1687" target="_blank">
+                <img id="img-diploma2-small" alt="diploma de doctor">
+            </a>
+            <a id="img-diploma3" data-pswp-width="2400" data-pswp-height="1687" target="_blank">
+                <img id="img-diploma3-small" alt="atestat de conferentiar universitar">
+            </a>
         </div>
     </section>`;
 
@@ -66,5 +81,27 @@ export default class extends abstractView {
         }
 
         return fragment;
+    }
+
+    async linkImages(){
+        const dip1Elem = document.querySelector(`#img-diploma1`);       //asta e <a>
+        const dip2Elem = document.querySelector(`#img-diploma2`);
+        const dip3Elem = document.querySelector(`#img-diploma3`);
+        const dip1SmallElem = document.querySelector(`#img-diploma1-small`);        //asta e <img>
+        const dip2SmallElem = document.querySelector(`#img-diploma2-small`);
+        const dip3SmallElem = document.querySelector(`#img-diploma3-small`);
+        const imgElemFb = document.querySelector(`#social-img-fb`);
+        const imgElemIg = document.querySelector(`#social-img-ig`);
+        const imgElemTt = document.querySelector(`#social-img-tt`);
+
+        dip1Elem.href = dip1;
+        dip2Elem.href = dip2;
+        dip3Elem.href = dip3;
+        dip1SmallElem.src = dip1small;
+        dip2SmallElem.src = dip2small;
+        dip3SmallElem.src = dip3small;
+        imgElemFb.src = iconFb;
+        imgElemIg.src = iconIg;
+        imgElemTt.src = iconTt;
     }
 }
