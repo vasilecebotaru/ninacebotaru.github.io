@@ -94,6 +94,7 @@
 .portfolio .about-me-text{
     color: hsl(0, 0%, 100%, 0.6);
     line-height: 1.7;
+    text-wrap: balance;
 }
 
 .portfolio .portofoliu-section3 em {

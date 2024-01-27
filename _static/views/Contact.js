@@ -1,5 +1,7 @@
 import abstractView from "./abstractView.js";
+import setFormListener from "../js/contact-script.js";
 import '../css/contact.css';
+
 
 export default class extends abstractView {
     constructor() {
@@ -49,5 +51,9 @@ export default class extends abstractView {
         }
 
         return fragment;
+    }
+
+    async formListener(){
+        setFormListener();
     }
 }

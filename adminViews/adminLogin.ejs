@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Log in</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+    <div class="container-supremeth login">
+        <form action="/admin/login" method="POST" id="login-form">
+            <input type="text" name="username" required placeholder="Username" id="admin-username">
+            <input type="password" name="password" required placeholder="password" id="admin-password">
+            <button class="btn login-btn">Log in</button>
+        </form>
+        <% if(messages.error) { %>
+			<p class="error-message"><%= messages.error %></p>
+		<% } %>
+    </div>
+</body>
+</html>

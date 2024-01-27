@@ -1,5 +1,6 @@
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode: 'development',
@@ -13,9 +14,22 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
+                oneOf: [
+                    {
+                        test: /dashboard\.css$/,
+                        use: [
+                            MiniCssExtractPlugin.loader,
+                            'css-loader',
+                            'postcss-loader'
+                        ]
+                    },
+                    {
+                        use: [
+                            'style-loader',
+                            'css-loader',
+                            'postcss-loader'
+                        ]
+                    }
                 ]
             },
             {
@@ -33,6 +47,9 @@ module.exports = {
             title: "Nina Cebotaru",
             filename: "index.html",
             template: './index.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'dashboard.css',
         })
     ]
 }

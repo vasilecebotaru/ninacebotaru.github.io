@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+    <div class="container-supremeth dashboard">
+        <section class="add-admin">
+            <p>add admin</p>
+            <form action="/dev/addUser" method="post">
+                <input type="text" name="username" placeholder="username">
+                <input type="password" name="password" placeholder="password">
+                <button>Add admin</button>
+            </form>
+        </section>
+        <section class="users-actions">
+            <div class="flex-wrapper horizontal">
+                <p class="subsection-title">User actions</p>
+                <form action="/api/users" method="get">
+                    <button class="btn">GET users</button>
+                </form>
+            </div>
+            <div class="users-grid">
+                <div class="data-panel active-users">
+                    <p class="subsection-title">Active users: <span class="users-count"><%=users.length %></span></p>
+                    <div class="users-container">
+                        <% if(users.length === 0){ %>
+                            <p>Nu mai exista useri in lista.</p>
+                        <% } else { %>
+                            <% let dateOptions = {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false } %>
+                            <% for(let user of users) { %>
+                                <div class="user" data-uid="<%= user._id %>">
+                                    <div class="user-data-wrapper">
+                                        <p>Username: <span class="user-data"><%= user.fullName %></span></p>
+                                        <p>Telephone: <span class="user-data"><%= user.telephone %></span></p>
+                                        <p>Date signed: <span class="user-data"><%= user.dateSigned.toLocaleString('ro-RO', dateOptions); %></span></p>
+                                        <p>Served: <span class="user-data"><%= user.served %></span></p>
+                                    </div>
+                                    <div class="user-buttons">
+                                        <button class="btn cancel-btn">Cancel</button>
+                                        <button class="btn serve-btn">Serve</button>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="data-panel cancelled-users">
+                    <p class="subsection-title">Cancelled users: <span class="users-count"><%=cancelledUsers.length %></span></p>
+                    <div class="users-container">
+                        <% if(cancelledUsers.length === 0){ %>
+                            <p>Nu mai exista useri in lista.</p>
+                        <% } else { %>
+                            <% let dateOptions = {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false } %>
+                            <% for(let user of cancelledUsers) { %>
+                                <div class="user" data-uid="<%= user._id %>">
+                                    <div class="user-data-wrapper">
+                                        <% if(user.cancelled === true) { %>
+                                            <p class="cancelled">Cancelled: <%= user.dateCancelled.toLocaleString('ro-RO', dateOptions); %></p>
+                                        <% } %>
+                                        <p>Username: <span class="user-data"><%= user.fullName %></span></p>
+                                        <p>Telephone: <span class="user-data"><%= user.telephone %></span></p>
+                                        <p>Date signed: <span class="user-data"><%= user.dateSigned.toLocaleString('ro-RO', dateOptions); %></span></p>
+                                        <p>Served: <span class="user-data"><%= user.served %></span></p>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="data-panel served-users">
+                    <p class="subsection-title">Served users: <span class="users-count"><%=servedUsers.length %></span></p>
+                    <div class="users-container">
+                        <% if(servedUsers.length === 0){ %>
+                            <p>Nu mai exista useri in lista.</p>
+                        <% } else { %>
+                            <% let dateOptions = {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: false } %>
+                            <% for(let user of servedUsers) { %>
+                                <div class="user" data-uid="<%= user._id %>">
+                                    <div class="user-data-wrapper">
+                                        <% if(user.cancelled === true) { %>
+                                            <p class="cancelled">Cancelled: <%= user.dateCancelled.toLocaleString('ro-RO', dateOptions); %></p>
+                                        <% } %>
+                                        <p>Username: <span class="user-data"><%= user.fullName %></span></p>
+                                        <p>Telephone: <span class="user-data"><%= user.telephone %></span></p>
+                                        <p>Date signed: <span class="user-data"><%= user.dateSigned.toLocaleString('ro-RO', dateOptions); %></span></p>
+                                        <p>Served: <span class="user-data"><%= user.served %></span></p>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <script>
+        
+        const usersContainer = document.querySelector(".active-users .users-container");
+        
+        usersContainer.addEventListener("click", async e => {
+
+            const userElem = e.target.closest(".user");
+            const cancelBtn = userElem.querySelector(".cancel-btn");
+            const serveBtn = userElem.querySelector(".serve-btn");
+            const HOST = `http://localhost:3000`;
+
+            if(e.target.classList.contains("cancel-btn")){
+
+                userElem.classList.add("cancelled");
+                cancelBtn.remove();
+                serveBtn.remove();
+
+                const data = {
+                    "action": "cancel",
+                    "_id": userElem.dataset.uid
+                }
+
+                const res = await fetch(`${HOST}/api/users`, {
+                    method: "PATCH",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(data)
+                });
+
+
+            } else if (e.target.classList.contains("serve-btn")){
+
+                userElem.classList.add("served");
+                cancelBtn.remove();
+                serveBtn.remove();
+
+                const data = {
+                    "action": "serve",
+                    "_id": userElem.dataset.uid
+                }
+
+                const res = await fetch(`${HOST}/api/users`, {
+                    method: "PATCH",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(data)
+                });
+            }
+        });
+    </script>
+</body>
+</html>

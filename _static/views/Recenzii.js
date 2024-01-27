@@ -81,7 +81,7 @@ export default class extends abstractView {
             <div class="swiper-button-prev"></div>
             <div class="swiper-pagination"></div>
         </div>
-        <button class="btn"><a href="/contact">Înscrie-te acum</a></button>
+        <button class="btn"><a href="/contact" data-link="contact">Înscrie-te acum</a></button>
         <div class="social-container">
             <a href="#" class="social-link"><img id="social-img-fb" alt="link spre facebook"></a>
             <a href="#" class="social-link"><img id="social-img-ig" alt="link spre instagram"></a>

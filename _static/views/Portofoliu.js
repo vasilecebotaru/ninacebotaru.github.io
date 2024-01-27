@@ -28,7 +28,7 @@ export default class extends abstractView {
                 <li>Relaționare</li>
                 <li>Echipă</li>
             </ul>
-            <button class="btn"><a href="/contact">Începe</a></button>
+            <button class="btn"><a href="/contact" data-link="contact">Începe</a></button>
         </div>
         <div class="social-container">
             <a href="#" class="social-link"><img id="social-img-fb" alt="link spre facebook"></a>

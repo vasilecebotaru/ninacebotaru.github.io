@@ -9,6 +9,7 @@ import lightbox from "./portofoliu-script.js";
 import "../css/styles.css";
 import "../css/portofoliu.css";
 import "../css/vars.css"
+import "../css/dashboard.css"
 
 
 const mainElem = document.querySelector("#app");
@@ -55,15 +56,16 @@ const router = async () => {
     mainElem.innerHTML = '';
     mainElem.appendChild(fragment);
 
-    if(match.route.path === `/` || match.route.path === `/portofoliu` || match.route.path === `/recenzii`){
-
-        await view.linkImages();
-    }
     if(match.route.path === `/recenzii`){
+        await view.linkImages();
         swiper = createSwiper();
     }
     if(match.route.path === `/portofoliu` || match.route.path === `/`){
+        await view.linkImages();
         lightbox.init();
+    }
+    if(match.route.path === `/contact`){
+        await view.formListener();
     }
 
 
@@ -79,8 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if(e.target.matches("[data-link]")){
             e.preventDefault();
             navigateTo(e.target.href);
-
-            console.log(location.pathname);
 
             navLinksArr.forEach(navLink => {
                 navLink.classList.remove("active");

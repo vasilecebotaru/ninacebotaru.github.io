@@ -29,7 +29,7 @@ export default class extends abstractView {
                     <p>10 sesiuni</p>
                 </div>
             </div>
-            <button class="btn"><a href="/contact">Înscrie-te</a></button>
+            <button class="btn"><a href="/contact" data-link="contact">Înscrie-te</a></button>
         </div>
     </section>
     <section class="service-section2">
@@ -52,7 +52,7 @@ export default class extends abstractView {
                     <p>10 sesiuni</p>
                 </div>
             </div>
-            <button class="btn"><a href="/contact">Înscrie-te</a></button>
+            <button class="btn"><a href="/contact" data-link="contact">Înscrie-te</a></button>
         </div>
     </section>
     <section class="service-section3">
@@ -75,7 +75,7 @@ export default class extends abstractView {
                     <p>10 sesiuni</p>
                 </div>
             </div>
-            <button class="btn"><a href="/contact">Înscrie-te</a></button>
+            <button class="btn"><a href="/contact" data-link="contact">Înscrie-te</a></button>
         </div>
     </section>
     <section class="service-section4">
@@ -86,7 +86,7 @@ export default class extends abstractView {
                 <h3 class="price">99<span class="small">€</span></h3>
                 <p>1 sesiune - 60 minute</p>
             </div>
-            <button class="btn"><a href="/contact">Înscrie-te</a></button>
+            <button class="btn"><a href="/contact" data-link="contact">Înscrie-te</a></button>
         </div>
     </section>`;
 
