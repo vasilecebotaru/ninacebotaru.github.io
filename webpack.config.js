@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -50,6 +51,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: 'dashboard.css',
+        }),
+        new webpack.DefinePlugin({
+            'process.env.HOST': JSON.stringify(`http://164.92.140.84:3000`),
         })
     ]
 }
