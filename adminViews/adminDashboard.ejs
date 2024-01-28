@@ -121,7 +121,7 @@
                     "_id": userElem.dataset.uid
                 }
 
-                const res = await fetch(`${HOST}/api/users`, {
+                const res = await fetch(`/api/users`, {
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(data)
@@ -139,7 +139,7 @@
                     "_id": userElem.dataset.uid
                 }
 
-                const res = await fetch(`${HOST}/api/users`, {
+                const res = await fetch(`/api/users`, {
                     method: "PATCH",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(data)

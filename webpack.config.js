@@ -53,7 +53,7 @@ module.exports = {
             filename: 'dashboard.css',
         }),
         new webpack.DefinePlugin({
-            'process.env.HOST': JSON.stringify(`http://164.92.140.84:3000`),
+            'process.env.HOST': JSON.stringify(`http://164.92.140.84`),
         })
     ]
 }
