@@ -4,6 +4,7 @@ const path = require("path");
 const passport = require("passport");
 const passportInit = require("./server/passport-config.js");
 const session = require("express-session");
+const mongoSessionStore = require("connect-mongo");
 const flash = require("express-flash");
 const bcrypt = require("bcryptjs");
 const port = process.env.PORT || 3000;
@@ -36,7 +37,11 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {maxAge: 24*60*60*1000}
+    cookie: {maxAge: 24*60*60*1000},
+    store: mongoSessionStore.create({
+        mongoUrl: process.env.MONGO_URI,
+        ttl: 24 * 60 * 60
+    })
 }));
 app.use(flash());
 app.use(passport.initialize());
