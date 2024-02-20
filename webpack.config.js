@@ -11,6 +11,7 @@ module.exports = {
         filename: 'main.js',
         assetModuleFilename: '[name][ext]'
     },
+    devtool: 'eval-source-map',
     module: {
         rules: [
             {
