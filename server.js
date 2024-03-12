@@ -9,7 +9,9 @@ const flash = require("express-flash");
 const bcrypt = require("bcryptjs");
 const port = process.env.PORT || 3000;
 const {connectDB, dbClient} = require("./server/connectDB.js");
-const { ObjectId } = require("mongodb")
+const { ObjectId } = require("mongodb");
+// const nodemailer = require("nodemailer");
+const smtpTransporter = require("./server/smtpTransporter.js");
 
 const app = express();
 
@@ -175,11 +177,30 @@ app.post('/submit', async (req, res) => {
             served: false,
             cancelled: false
         });
+
+        // async..await is not allowed in global scope, must use a wrapper
+        // send mail with defined transport object
+        const info = await smtpTransporter.sendMail({
+            from: `"Robotul Thau Pervers" <${process.env.SENDER}>`, // sender address
+            to: process.env.RECIPIENT, // list of receivers
+            subject: "Client nou", // Subject line
+            html: `<h2>Cineva doreste sa beneficieze de serviciile tale.</h2>
+            <br>
+            <p>Nume si prenume: <b>${req.body.name}</b></p>
+            <p>Telefon: <b>${req.body.tel}</b></p>
+            <br>
+            O zi de vineri.
+            `
+        });
+        
+        console.log("Message sent: %s", info.messageId);
         return res.send("success");
+        // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
     } catch(err){
         console.log(`Something bad happen: ${err}`)
         return res.send("error")
     }
+
 });
 
 
@@ -190,3 +211,6 @@ app.get("/*", (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
+
+
+
