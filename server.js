@@ -181,15 +181,14 @@ app.post('/submit', async (req, res) => {
         // async..await is not allowed in global scope, must use a wrapper
         // send mail with defined transport object
         const info = await smtpTransporter.sendMail({
-            from: `"Robotul Thau Pervers" <${process.env.SENDER}>`, // sender address
-            to: process.env.RECIPIENT, // list of receivers
+            from: `"Robotul Life Coach"`, //<${process.env.SENDER}>`, // sender address
+            to: process.env.RECIPIENT || "loge.lederun@gmail.com", // list of receivers
             subject: "Client nou", // Subject line
             html: `<h2>Cineva doreste sa beneficieze de serviciile tale.</h2>
             <br>
             <p>Nume si prenume: <b>${req.body.name}</b></p>
             <p>Telefon: <b>${req.body.tel}</b></p>
             <br>
-            O zi de vineri.
             `
         });
         
